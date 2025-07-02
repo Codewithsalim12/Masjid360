@@ -4,10 +4,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const GooglePlayLogo = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 512 512" fill="currentColor" height="1em" width="1em" {...props}>
-        <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0L11 27.3l104.6 104.6L47 0zm0 512l104.6-104.6L11 484.7 47 512zm221.3-221.3l60.1-60.1L384.2 166.7 268.3 290.7zM203.3 109.2L27 234.3l176.3 176.3 176.3-176.3-176.3-176.3z" />
-  </svg>
+    <svg viewBox="0 0 512 512" fill="currentColor" {...props}>
+      <path d="M428.3,234.4,142,56.3a32.3,32.3,0,0,0-48.4,28.1V427.6a32.3,32.3,0,0,0,48.4,28.1l286.3-178.1A32.5,32.5,0,0,0,428.3,234.4Z"/>
+    </svg>
 );
+
 
 export function HeroSection() {
   return (
@@ -34,22 +35,14 @@ export function HeroSection() {
               </div>
             </div>
             <div className="relative mt-12 lg:mt-0 flex justify-center">
-               <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
-                    <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-                    <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
-                    <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
-                    <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-                    <div className="rounded-[2rem] overflow-hidden w-full h-full bg-background">
-                        <Image
-                            src="https://placehold.co/300x600.png"
-                            alt="App preview showing a map with pins"
-                            width={300}
-                            height={600}
-                            className="w-full h-full object-cover"
-                            data-ai-hint="app map"
-                        />
-                    </div>
-                </div>
+              <Image
+                src="https://i.ibb.co/VvZg1DE/image.png"
+                alt="SnapMap preview"
+                width={400}
+                height={400}
+                className="rounded-lg shadow-2xl"
+                data-ai-hint="app mockup"
+              />
             </div>
           </div>
         </div>
