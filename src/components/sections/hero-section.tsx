@@ -6,7 +6,7 @@ import { AnimatedBubbles } from '@/components/layout/animated-bubbles';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-background overflow-hidden">
+    <section id="home" className="relative bg-background overflow-hidden scroll-mt-16">
       <AnimatedBubbles />
       <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
