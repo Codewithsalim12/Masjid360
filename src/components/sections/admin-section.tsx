@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { LogIn, LogOut, Save, Send } from 'lucide-react';
+import { LogIn, LogOut, Save, Send, Phone, Hash } from 'lucide-react';
 
 const loginSchema = z.object({
   phoneNumber: z.string().min(10, 'Valid phone number is required.'),
@@ -115,7 +115,10 @@ export function AdminSection() {
                         <FormItem>
                           <FormLabel>Phone Number</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., +1234567890" {...field} disabled={showOtpInput} />
+                            <div className="relative">
+                              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                              <Input placeholder="e.g., +1234567890" {...field} disabled={showOtpInput} className="pl-10" />
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -135,7 +138,10 @@ export function AdminSection() {
                           <FormItem>
                             <FormLabel>OTP</FormLabel>
                             <FormControl>
-                              <Input placeholder="Enter 6-digit OTP" {...field} />
+                              <div className="relative">
+                                <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                <Input placeholder="Enter 6-digit OTP" {...field} className="pl-10" />
+                              </div>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -149,46 +155,48 @@ export function AdminSection() {
             ) : (
               <Form {...timingsForm}>
                 <form onSubmit={timingsForm.handleSubmit(handleUpdateTimings)} className="space-y-8">
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold font-headline">Today's Timings</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                      {prayerTimes.map(prayer => (
-                        <FormField
-                          key={`today-${prayer.id}`}
-                          control={timingsForm.control}
-                          name={`_today` as any}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{prayer.label}</FormLabel>
-                              <FormControl>
-                                <Input placeholder="HH:MM" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      ))}
+                  <div className="space-y-6">
+                    <div className="space-y-4 border p-4 rounded-lg">
+                      <h3 className="text-lg font-semibold font-headline">Today's Timings</h3>
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        {prayerTimes.map(prayer => (
+                          <FormField
+                            key={`today-${prayer.id}`}
+                            control={timingsForm.control}
+                            name={`${prayer.id}_today` as keyof TimingsInputs}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{prayer.label}</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="HH:MM" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold font-headline">Tomorrow's Timings</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                      {prayerTimes.map(prayer => (
-                        <FormField
-                          key={`tomorrow-${prayer.id}`}
-                          control={timingsForm.control}
-                          name={`_tomorrow` as any}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{prayer.label}</FormLabel>
-                              <FormControl>
-                                <Input placeholder="HH:MM" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      ))}
+                    <div className="space-y-4 border p-4 rounded-lg">
+                      <h3 className="text-lg font-semibold font-headline">Tomorrow's Timings</h3>
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        {prayerTimes.map(prayer => (
+                          <FormField
+                            key={`tomorrow-${prayer.id}`}
+                            control={timingsForm.control}
+                            name={`${prayer.id}_tomorrow` as keyof TimingsInputs}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{prayer.label}</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="HH:MM" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
