@@ -36,12 +36,12 @@ export function HeroSection() {
             </div>
             <div className="relative mt-12 lg:mt-0 flex justify-center">
               <Image
-                src="https://i.ibb.co/qFXs4PTv/Chat-GPT-Image-Jul-2-2025-06-09-20-PM-removebg-preview.png"
+                src="https://m.media-amazon.com/images/I/61UWctKaOXL._AC_UF1000,1000_QL80_.jpg"
                 alt="SnapMap preview"
                 width={400}
                 height={400}
                 className="rounded-lg"
-                data-ai-hint="app mockup"
+                data-ai-hint="app mockup map"
               />
             </div>
           </div>
