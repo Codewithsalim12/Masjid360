@@ -33,12 +33,11 @@ export function HeroSection() {
             <div className="relative mt-12 lg:mt-0">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                  <Image
-                    src="https://placehold.co/600x400.png"
-                    alt="Masjid360 App Preview"
+                    src="https://images.unsplash.com/photo-1532664035445-93d3d61184d2"
+                    alt="A beautiful mosque at sunset"
                     width={600}
                     height={400}
-                    className="rounded-lg shadow-2xl"
-                    data-ai-hint="app interface"
+                    className="rounded-lg shadow-2xl w-full h-auto"
                   />
               </div>
             </div>
