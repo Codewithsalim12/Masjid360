@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-background overflow-hidden scroll-mt-16">
+    <section id="home" className="relative bg-background overflow-hidden pt-16">
       {/* Grid and glow background */}
       <div className="absolute inset-0 -z-10 h-full w-full">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,hsl(var(--secondary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--secondary))_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
@@ -42,8 +42,8 @@ export function HeroSection() {
               <Image
                 src="https://ik.imagekit.io/ildjn57it/ChatGPT_Image_Jul_2__2025__08_26_23_PM-removebg-preview.png?updatedAt=1751468935826"
                 alt="SnapMap preview"
-                width={400}
-                height={867}
+                width={450}
+                height={975}
                 className="rounded-lg max-h-[70vh] w-auto drop-shadow-[0_25px_25px_hsl(var(--primary)/0.15)]"
                 data-ai-hint="app mockup map"
                 priority

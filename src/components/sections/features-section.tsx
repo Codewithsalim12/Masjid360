@@ -28,7 +28,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="relative py-12 md:py-24 bg-secondary overflow-hidden scroll-mt-16">
+    <section id="features" className="relative pt-28 pb-12 md:pt-40 md:pb-24 bg-secondary overflow-hidden">
       <AnimatedBubbles />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">

@@ -93,7 +93,7 @@ export function AdminSection() {
   ] as const;
 
   return (
-    <section id="admin" className="relative py-12 md:py-24 bg-muted overflow-hidden scroll-mt-16">
+    <section id="admin" className="relative pt-28 pb-12 md:pt-40 md:pb-24 bg-muted overflow-hidden">
       <AnimatedBubbles />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="max-w-2xl mx-auto shadow-lg border-2">
