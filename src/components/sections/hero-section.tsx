@@ -36,7 +36,7 @@ export function HeroSection() {
             </div>
             <div className="relative mt-12 lg:mt-0 flex justify-center">
               <Image
-                src="https://i.ibb.co/qDYSjsM/image.png"
+                src="https://ik.imagekit.io/ildjn57it/ChatGPT_Image_Jul_2__2025__08_26_23_PM-removebg-preview.png?updatedAt=1751468935826"
                 alt="SnapMap preview"
                 width={400}
                 height={867}
