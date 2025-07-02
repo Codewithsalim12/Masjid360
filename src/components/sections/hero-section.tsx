@@ -33,11 +33,12 @@ export function HeroSection() {
             <div className="relative mt-12 lg:mt-0">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                  <Image
-                    src="https://images.unsplash.com/photo-1532664035445-93d3d61184d2"
-                    alt="A beautiful mosque at sunset"
+                    src="https://images.unsplash.com/photo-1583410657903-27a3741b69e3"
+                    alt="A beautiful mosque"
                     width={600}
                     height={400}
-                    className="rounded-lg shadow-2xl w-full h-auto"
+                    className="rounded-lg shadow-2xl w-full h-auto object-cover"
+                    data-ai-hint="mosque architecture"
                   />
               </div>
             </div>
