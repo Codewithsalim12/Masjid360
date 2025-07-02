@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Mosque } from '@/components/icons/mosque';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
 export function Header() {
@@ -41,6 +41,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
+              <SheetDescription className="sr-only">A list of navigation links for the site.</SheetDescription>
               <nav className="flex flex-col gap-6 pt-12">
                 {navLinks.map((link) => (
                   <Link
