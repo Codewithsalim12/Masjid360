@@ -94,7 +94,7 @@ export function AdminSection() {
   return (
     <section id="admin" className="py-12 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="max-w-2xl mx-auto shadow-lg">
+        <Card className="max-w-2xl mx-auto shadow-lg border-2">
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">
               {isLoggedIn ? 'Edit Prayer Timings' : 'Masjid Editor Login'}
@@ -124,7 +124,7 @@ export function AdminSection() {
                         </FormItem>
                       )}
                     />
-                    {!showOtpInput && <Button type="submit" className="w-full bg-primary hover:bg-primary/90">Send OTP <Send /></Button>}
+                    {!showOtpInput && <Button type="submit" className="w-full">Send OTP <Send /></Button>}
                   </form>
                 </Form>
 
@@ -147,7 +147,7 @@ export function AdminSection() {
                           </FormItem>
                         )}
                       />
-                      <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">Login <LogIn /></Button>
+                      <Button type="submit" className="w-full">Login <LogIn /></Button>
                     </form>
                   </Form>
                 )}
@@ -200,7 +200,7 @@ export function AdminSection() {
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button type="submit" className="w-full sm:w-auto flex-1 bg-primary hover:bg-primary/90">Update Timings <Save /></Button>
+                    <Button type="submit" className="w-full sm:w-auto flex-1">Update Timings <Save /></Button>
                     <Button type="button" variant="outline" onClick={handleLogout} className="w-full sm:w-auto">Logout <LogOut /></Button>
                   </div>
                 </form>

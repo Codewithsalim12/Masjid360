@@ -17,7 +17,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="#home" className="flex items-center gap-2">
           <Mosque className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold font-headline text-primary">Masjid360</span>
+          <span className="text-2xl font-bold font-headline text-primary">Masjid360</span>
         </Link>
         <nav className="hidden md:flex gap-6">
           {navLinks.map((link) => (

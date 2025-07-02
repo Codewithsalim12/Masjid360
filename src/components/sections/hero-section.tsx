@@ -7,6 +7,7 @@ import Link from 'next/link';
 export function HeroSection() {
   return (
     <section id="home" className="relative bg-background overflow-hidden">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -21,8 +22,8 @@ export function HeroSection() {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <Link href="#" passHref>
-                    <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                      Get on Play Store
+                    <Button size="lg" className="w-full">
+                      Download The App
                       <Play className="ml-2 -mr-1 h-5 w-5" />
                     </Button>
                   </Link>
@@ -37,7 +38,7 @@ export function HeroSection() {
                     width={600}
                     height={400}
                     className="rounded-lg shadow-2xl"
-                    data-ai-hint="map screenshot"
+                    data-ai-hint="app interface"
                   />
               </div>
             </div>
