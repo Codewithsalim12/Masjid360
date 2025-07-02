@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-background overflow-hidden scroll-mt-24">
+    <section id="home" className="relative bg-background overflow-hidden scroll-mt-32">
       {/* Grid and glow background */}
       <div className="absolute inset-0 -z-10 h-full w-full">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,hsl(var(--secondary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--secondary))_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
