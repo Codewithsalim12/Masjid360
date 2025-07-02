@@ -3,13 +3,6 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-const GooglePlayLogo = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 512 512" fill="currentColor" {...props}>
-      <path d="M428.3,234.4,142,56.3a32.3,32.3,0,0,0-48.4,28.1V427.6a32.3,32.3,0,0,0,48.4,28.1l286.3-178.1A32.5,32.5,0,0,0,428.3,234.4Z"/>
-    </svg>
-);
-
-
 export function HeroSection() {
   return (
     <section id="home" className="relative bg-background overflow-hidden">
@@ -28,7 +21,13 @@ export function HeroSection() {
               <div className="mt-8 flex justify-center lg:justify-start">
                 <Link href="#" passHref>
                   <Button variant="outline" size="lg" className="w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 hover:text-background border-transparent">
-                    <GooglePlayLogo className="h-6 w-6 mr-3" />
+                    <Image
+                      src="https://ik.imagekit.io/ildjn57it/google-play.png?updatedAt=1751468934524"
+                      alt="Google Play logo"
+                      width={24}
+                      height={24}
+                      className="mr-3"
+                    />
                     Download on Google Play
                   </Button>
                 </Link>
