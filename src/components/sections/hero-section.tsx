@@ -8,8 +8,8 @@ export function HeroSection() {
     <section id="home" className="relative bg-background overflow-hidden">
       <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="flex items-center min-h-[calc(100vh-4rem)] py-16 sm:py-20 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
             <div className="text-center lg:text-left">
               <h1 className="text-4xl font-extrabold font-headline tracking-tight text-foreground sm:text-5xl md:text-6xl">
                 <span className="block">Your Digital Guide</span>
@@ -20,7 +20,7 @@ export function HeroSection() {
               </p>
               <div className="mt-8 flex justify-center lg:justify-start">
                 <Link href="#" passHref>
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 hover:text-background border-transparent">
+                  <Button size="lg" className="w-full sm:w-auto shadow-lg hover:shadow-primary/50 transition-shadow">
                     <Image
                       src="https://ik.imagekit.io/ildjn57it/google-play.png?updatedAt=1751468934524"
                       alt="Google Play logo"
@@ -33,14 +33,15 @@ export function HeroSection() {
                 </Link>
               </div>
             </div>
-            <div className="relative mt-12 lg:mt-0 flex justify-center">
+            <div className="relative flex justify-center lg:animate-float">
               <Image
                 src="https://ik.imagekit.io/ildjn57it/ChatGPT_Image_Jul_2__2025__08_26_23_PM-removebg-preview.png?updatedAt=1751468935826"
                 alt="SnapMap preview"
                 width={400}
                 height={867}
-                className="rounded-lg"
+                className="rounded-lg max-h-[70vh] w-auto"
                 data-ai-hint="app mockup map"
+                priority
               />
             </div>
           </div>
