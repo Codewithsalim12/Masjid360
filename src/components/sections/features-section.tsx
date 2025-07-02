@@ -33,7 +33,7 @@ export function FeaturesSection() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">
-            Everything You Need in One App
+            What Masjid360 Offers
           </h2>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
             Masjid360 is designed to be your comprehensive guide to mosque life.
