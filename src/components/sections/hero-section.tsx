@@ -59,12 +59,12 @@ export function HeroSection() {
                     <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
                     <div className="rounded-[2rem] overflow-hidden w-full h-full bg-background">
                         <Image
-                            src="https://placehold.co/300x600.png"
-                            alt="App preview on a phone"
+                            src="https://images.unsplash.com/photo-1604357209793-f5d9f4393671"
+                            alt="App preview showing a map"
                             width={300}
                             height={600}
                             className="w-full h-full object-cover"
-                            data-ai-hint="app mockup map"
+                            data-ai-hint="app map"
                         />
                     </div>
                 </div>
