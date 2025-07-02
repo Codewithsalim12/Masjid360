@@ -1,0 +1,49 @@
+import React from 'react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Play } from 'lucide-react';
+import Link from 'next/link';
+
+export function HeroSection() {
+  return (
+    <section id="home" className="relative bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl font-extrabold font-headline tracking-tight text-foreground sm:text-5xl md:text-6xl">
+                <span className="block">Your Digital Guide</span>
+                <span className="block text-primary">to the Masjid</span>
+              </h1>
+              <p className="mt-3 max-w-md mx-auto text-lg text-muted-foreground sm:text-xl md:mt-5 md:max-w-3xl lg:mx-0">
+                Discover masjids, get real-time prayer schedules, and connect with your community. All in one place.
+              </p>
+              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                <div className="rounded-md shadow">
+                  <Link href="#" passHref>
+                    <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                      Get on Play Store
+                      <Play className="ml-2 -mr-1 h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="relative mt-12 lg:mt-0">
+              <div className="relative mx-auto max-w-lg lg:max-w-none">
+                 <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Masjid360 App Preview"
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-2xl"
+                    data-ai-hint="map screenshot"
+                  />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
