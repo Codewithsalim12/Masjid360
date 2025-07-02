@@ -17,7 +17,7 @@ export function HeroSection() {
                 <span className="block text-primary">to the Masjid</span>
               </h1>
               <p className="mt-3 max-w-md mx-auto text-lg text-muted-foreground sm:text-xl md:mt-5 md:max-w-3xl lg:mx-0">
-                Discover masjids, get real-time prayer schedules, and connect with your community. All in one place.
+                Find Masjids. Accurate Timings. Straight from the Source.
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
