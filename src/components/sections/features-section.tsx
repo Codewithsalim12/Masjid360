@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { MapPin, Clock, MessageSquare, Languages } from 'lucide-react';
+import { AnimatedBubbles } from '@/components/layout/animated-bubbles';
 
 const features = [
   {
@@ -27,8 +28,9 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-12 md:py-24 bg-secondary">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="relative py-12 md:py-24 bg-secondary overflow-hidden">
+      <AnimatedBubbles />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">
             Everything You Need in One App

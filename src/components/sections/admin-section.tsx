@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { LogIn, LogOut, Save, Send, Phone, Hash } from 'lucide-react';
+import { AnimatedBubbles } from '@/components/layout/animated-bubbles';
 
 const loginSchema = z.object({
   phoneNumber: z.string().min(10, 'Valid phone number is required.'),
@@ -92,8 +93,9 @@ export function AdminSection() {
   ] as const;
 
   return (
-    <section id="admin" className="py-12 md:py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="admin" className="relative py-12 md:py-24 bg-background overflow-hidden">
+      <AnimatedBubbles />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="max-w-2xl mx-auto shadow-lg border-2">
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">
