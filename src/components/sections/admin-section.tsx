@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -37,34 +37,69 @@ type LoginInputs = z.infer<typeof loginSchema>;
 type OtpInputs = z.infer<typeof otpSchema>;
 type TimingsInputs = z.infer<typeof timingsSchema>;
 
+// Mock data that would be fetched from the backend for the assigned masjid
+const mockFetchedTimings = {
+  fajr_today: '05:35', dhuhr_today: '13:20', asr_today: '17:00', maghrib_today: '19:05', isha_today: '20:40',
+  fajr_tomorrow: '05:36', dhuhr_tomorrow: '13:20', asr_tomorrow: '17:01', maghrib_tomorrow: '19:06', isha_tomorrow: '20:41',
+};
+
+
 export function AdminSection() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [masjidName, setMasjidName] = useState('');
+  const [authToken, setAuthToken] = useState<string | null>(null);
   const { toast } = useToast();
 
   const loginForm = useForm<LoginInputs>({ resolver: zodResolver(loginSchema), defaultValues: { phoneNumber: '' } });
   const otpForm = useForm<OtpInputs>({ resolver: zodResolver(otpSchema), defaultValues: { otp: '' } });
   const timingsForm = useForm<TimingsInputs>({
     resolver: zodResolver(timingsSchema),
+    // These are just initial values, will be overwritten with fetched data on login
     defaultValues: {
-      fajr_today: '05:30', dhuhr_today: '13:15', asr_today: '16:45', maghrib_today: '19:00', isha_today: '20:30',
-      fajr_tomorrow: '05:31', dhuhr_tomorrow: '13:15', asr_tomorrow: '16:46', maghrib_tomorrow: '19:01', isha_tomorrow: '20:31',
+      fajr_today: '', dhuhr_today: '', asr_today: '', maghrib_today: '', isha_today: '',
+      fajr_tomorrow: '', dhuhr_tomorrow: '', asr_tomorrow: '', maghrib_tomorrow: '', isha_tomorrow: '',
     }
   });
+
+  // Effect to fetch timings when user logs in
+  useEffect(() => {
+    const fetchInitialTimings = async () => {
+      if (!isLoggedIn || !authToken) return;
+      setIsLoading(true);
+      try {
+        // In a real app, you would fetch data for the specific masjid.
+        // e.g., await fetch(`/api/masjid/timings`, { headers: { 'Authorization': `Bearer ${authToken}` } });
+        console.log("Fetching initial timings with token:", authToken);
+        
+        // MOCKING the fetch call
+        await new Promise(resolve => setTimeout(resolve, 500)); 
+        
+        // Populate the form with fetched data.
+        timingsForm.reset(mockFetchedTimings);
+        
+        toast({ title: 'Timings Loaded', description: `Showing current timings for ${masjidName}.` });
+      } catch (error) {
+        toast({ variant: 'destructive', title: 'Fetch Error', description: 'Could not load prayer timings.' });
+      }
+      setIsLoading(false);
+    };
+
+    fetchInitialTimings();
+  }, [isLoggedIn, authToken, masjidName, timingsForm, toast]);
+
 
   const handleSendOtp: SubmitHandler<LoginInputs> = async (data) => {
     setIsLoading(true);
     try {
-      // In a real app, you would send the phone number to your backend to trigger an OTP service.
       const response = await fetch('/api/auth/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber: data.phoneNumber }),
       });
       
-      // MOCKING a successful response for demonstration purposes
       if (response.ok || !response.ok) { // For demo, we proceed even if API fails
         setPhoneNumber(data.phoneNumber);
         setShowOtpInput(true);
@@ -82,17 +117,24 @@ export function AdminSection() {
   const handleVerifyOtp: SubmitHandler<OtpInputs> = async (data) => {
     setIsLoading(true);
     try {
-      // In a real app, you would verify the OTP with your backend.
       const response = await fetch('/api/auth/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber, otp: data.otp }),
       });
 
-      // MOCKING a successful response for demonstration purposes
-      if (response.ok || data.otp === '123456' ) { // For demo, we accept a hardcoded OTP
+      if (response.ok || data.otp === '123456' ) {
+        // In a real app, the backend would return a token and user info (like their assigned masjid).
+        // const { token, masjid } = await response.json();
+        
+        // MOCKING backend response
+        const mockToken = `mock_token_${Date.now()}`;
+        const mockMasjid = { name: 'Central Mosque' };
+
+        setAuthToken(mockToken);
+        setMasjidName(mockMasjid.name);
         setIsLoggedIn(true);
-        toast({ title: 'Login Successful', description: 'You can now edit prayer timings.' });
+        toast({ title: 'Login Successful', description: `Welcome! You are now editing: ${mockMasjid.name}.` });
       } else {
         otpForm.setError('otp', { type: 'manual', message: 'Invalid OTP. Please try again.' });
         toast({ variant: 'destructive', title: 'Login Failed', description: 'The OTP you entered is incorrect.' });
@@ -106,10 +148,12 @@ export function AdminSection() {
   const handleUpdateTimings: SubmitHandler<TimingsInputs> = async (data) => {
     setIsLoading(true);
     try {
-      // In a real app, you would send the updated timings to your backend.
       const response = await fetch('/api/masjid/timings', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' /* 'Authorization': 'Bearer YOUR_AUTH_TOKEN' */ },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}` // The auth token is sent to the backend
+        },
         body: JSON.stringify(data),
       });
 
@@ -128,9 +172,11 @@ export function AdminSection() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setShowOtpInput(false);
+    setMasjidName('');
+    setAuthToken(null);
     loginForm.reset();
     otpForm.reset();
-    setPhoneNumber('');
+    timingsForm.reset(); // Clear form fields on logout
     toast({ title: 'Logged Out', description: 'You have been successfully logged out.' });
   };
   
@@ -149,7 +195,7 @@ export function AdminSection() {
         <Card className="max-w-2xl mx-auto shadow-lg border-2">
           <CardHeader>
             <CardTitle className="text-3xl font-headline text-center">
-              {isLoggedIn ? 'Edit Prayer Timings' : 'Masjid Editor Login'}
+              {isLoggedIn ? `Edit Timings for ${masjidName}` : 'Masjid Editor Login'}
             </CardTitle>
             <CardDescription className="text-center">
               {isLoggedIn ? 'Update the prayer schedules for today and tomorrow.' : 'Enter your credentials to manage your assigned masjid.'}
