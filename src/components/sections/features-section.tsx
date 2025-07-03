@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { MapPin, Clock, MessageSquare, Languages } from 'lucide-react';
 import { AnimatedBubbles } from '@/components/layout/animated-bubbles';
 
@@ -31,7 +31,7 @@ export function FeaturesSection() {
     <section id="features" className="relative pt-28 pb-12 md:pt-40 md:pb-24 bg-secondary overflow-hidden">
       <AnimatedBubbles />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">
             What Masjid360 Offers
           </h2>
@@ -41,16 +41,21 @@ export function FeaturesSection() {
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
-            <Card key={feature.title} className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-              <CardHeader className="items-center">
-                <div className="bg-primary/10 p-4 rounded-full">
+            <Card 
+              key={feature.title} 
+              className="bg-background/50 border-2 border-transparent hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-2 text-left"
+            >
+              <CardHeader>
+                <div className="w-20 h-20 bg-primary/10 rounded-xl flex items-center justify-center shadow-md">
                   {feature.icon}
                 </div>
-                <CardTitle className="mt-4 font-headline">{feature.title}</CardTitle>
-                <CardDescription className="mt-2 text-sm">
+              </CardHeader>
+              <CardContent className="flex flex-col gap-2">
+                <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
+                <CardDescription className="text-sm">
                   {feature.description}
                 </CardDescription>
-              </CardHeader>
+              </CardContent>
             </Card>
           ))}
         </div>
