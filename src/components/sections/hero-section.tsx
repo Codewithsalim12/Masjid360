@@ -43,7 +43,7 @@ export function HeroSection() {
               alt="SnapMap preview"
               width={500}
               height={1082}
-              className="rounded-lg max-h-[70vh] w-auto drop-shadow-[0_25px_25px_hsl(var(--primary)/0.15)]"
+              className="rounded-lg max-h-[80vh] w-auto drop-shadow-[0_25px_25px_hsl(var(--primary)/0.15)]"
               data-ai-hint="app mockup map"
               priority
             />
