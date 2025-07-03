@@ -20,7 +20,7 @@ const features = [
   {
     icon: <Languages className="h-8 w-8 text-primary" />,
     title: 'Multi-language Support',
-    description: 'Our app is available in multiple languages to serve a diverse and global community.',
+    description: 'Built for Urdu & English users',
   },
 ];
 
